@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#5!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Thu Dec  5 18:33:40 2019
@@ -7,19 +7,25 @@ Created on Thu Dec  5 18:33:40 2019
 """
 
 # import standard libraries
-import requests
 # import third-party libraries
 # import local libraries
+from cff_timetable import CFF
 
 if __name__ == '__main__':
-
-    payload = {'from': 'Neuchâtel', 'to': 'Lausanne'}
     
-    r = requests.get('http://transport.opendata.ch/v1/connections', 
-                     params = payload)
+    cff = CFF(level = 'DEBUG')
+    connections = cff.showConnections('Geneve', 'Neuchatel', limit = 1)
+    
+    cff.checkDelays(connections)
         
-    if r.status_code == requests.codes.ok:
-        content = r.json()
+    
+    # payload = {'from': 'Neuchâtel', 'to': 'Lausanne'}
+    
+    # r = requests.get('http://transport.opendata.ch/v1/connections', 
+    #                  params = payload)
         
-    else:
-        r.raise_for_status()
+    # if r.status_code == requests.codes.ok:
+    #     content = r.json()
+        
+    # else:
+    #     r.raise_for_status()
