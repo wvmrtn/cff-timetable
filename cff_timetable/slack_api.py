@@ -23,7 +23,7 @@ class SlackHandler(Handler):
     def __init__(self):
         
         Handler.__init__(self)
-        self.bot_token = os.environ['SLACK_API_TOKEN_BOT']
+        self.bot_token = os.environ['SLACK_API_TOKEN_BOT'] # needs to be added to the environment variables!  
         self.bot_client = slack.WebClient(token = self.bot_token)
         
     def emit(self, record):

@@ -70,7 +70,7 @@ class CFF:
         return content['connections']
     
     # check delay at departure
-    def returnDelays(self, connections):
+    def showDelays(self, connections):
         
         for i, c in enumerate(connections):
             datetime_departure = c['from']['departure']
