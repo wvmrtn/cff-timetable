@@ -14,8 +14,6 @@ import sys
 
 # some constants
 DEBUG = True
-NOTIFY_ERR = False
 RES_URL = 'http://transport.opendata.ch/v1'
 ABSPATH = os.path.dirname(os.path.abspath(sys.argv[0]))
-# OUTPUT_DIR = os.path.join(ABSPATH, 'output')
-# OUTPUT_FILENAME = 'output.log'
+CHANNEL = '#general'

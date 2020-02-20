@@ -7,17 +7,18 @@ Created on Thu Dec  5 18:33:40 2019
 """
 
 # import standard libraries
+import os
 # import third-party libraries
 # import local libraries
 from cff_timetable import CFF
 
 if __name__ == '__main__':
     
-    cff = CFF(level = 'DEBUG')
-    connections = cff.showConnections('Geneve', 'Neuchatel', limit = 1)
+    cff = CFF(level = 'INFO', notify_slack = True)
+    connections = cff.returnConnections('Neuchatel', 'EPFL',
+                                        limit = 1)
     
-    cff.checkDelays(connections)
-        
+    cff.returnDelays(connections)
     
     # payload = {'from': 'Neuchâtel', 'to': 'Lausanne'}
     
