@@ -7,22 +7,14 @@ Created on Sun Dec  8 21:12:04 2019
 """
 
 # import standard libraries
-import os
 # import third-party libraries
-import slack
 # import local libraries
+from cff_timetable import CFF
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 
-# bot_token = os.environ['SLACK_API_TOKEN_BOT']
-# bot_client = slack.WebClient(token = bot_token)
-
-# response = bot_client.chat_postMessage(
-#     channel = '#general',
-#     text = "Hello world!")
-
-# assert response["ok"]
-# assert response["message"]["text"] == "Hello world!"
-
-
-    
+    cff = CFF(level = 'INFO', notify_slack = True)
+    connections = cff.returnConnections('Neuchatel', 
+                                        'EPFL',
+                                        limit = 1)
+    cff.showDelays(connections)
