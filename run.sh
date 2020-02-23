@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # activate environment
 source ~/python_env/cff/bin/activate
