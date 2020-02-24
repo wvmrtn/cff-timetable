@@ -24,11 +24,12 @@ from .slack_api import SlackHandler
 class CFF:
     
     # init method
-    def __init__(self, level = 'DEBUG', notify_slack = False):
+    def __init__(self, level = 'DEBUG', notify_slack = False, channel = '#general'):
         
         # set logger of module
         self.level = level
         self.notify_slack = notify_slack
+        self.channel = channel
         level = logging.getLevelName(level)
         logger.setLevel(level)
         
@@ -38,7 +39,7 @@ class CFF:
         # log to slack in addition
         if self.notify_slack:
             # add the custom slack handler to the root logger
-            logger.addHandler(SlackHandler())
+            logger.addHandler(SlackHandler(self.channel))
             
         logger.debug('Created CFF object successfully')
      

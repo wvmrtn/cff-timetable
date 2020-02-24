@@ -16,21 +16,21 @@ import os
 # import third-party libraries
 import slack
 # import local libraries
-from .config import CHANNEL
 
 class SlackHandler(Handler):
     
-    def __init__(self):
+    def __init__(self, channel):
         
         Handler.__init__(self)
         self.bot_token = os.environ['SLACK_API_TOKEN_BOT'] # needs to be added to the environment variables!  
         self.bot_client = slack.WebClient(token = self.bot_token)
+        self.channel = channel
         
     def emit(self, record):
         
         log_entry = self.format(record)
         response = self.bot_client.chat_postMessage(
-            channel = CHANNEL,
+            channel = self.channel,
             text = log_entry)
         
         assert response["ok"]
