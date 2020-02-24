@@ -1,0 +1,6 @@
+from,to,via,limit,time,day,notice
+Neuchatel,Chamberonne,,1,,Monday,1800
+Neuchatel,Chamberonne,,1,,Tuesday,1800
+Neuchatel,EPFL,,1,,Wednesday,1800
+Neuchatel,Chamberonne,,1,,Thursday,1800
+Neuchatel,EPFL,,1,,Friday,1800
