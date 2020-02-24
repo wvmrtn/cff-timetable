@@ -14,10 +14,10 @@ import time
 # import third-party libraries
 import pandas as pd
 # import local libraries
-from cff_timetable import CFF
+from cff_timetable import CFF, ABSPATH
 
 # read schedule for checking when to send notifications
-schedule = pd.read_csv('schedule.csv')
+schedule = pd.read_csv(os.path.join(ABSPATH, 'schedule.csv'))
 # clean schedule
 schedule = schedule[['from', 'to', 'via', 'limit', 'time', 'day', 'notice']]
 

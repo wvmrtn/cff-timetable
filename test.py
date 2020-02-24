@@ -16,5 +16,6 @@ if __name__ == '__main__':
     cff = CFF(level = 'INFO', notify_slack = True)
     connections = cff.returnConnections('Neuchatel', 
                                         'EPFL',
+					time = '08:00',
                                         limit = 1)
     cff.showDelays(connections)
