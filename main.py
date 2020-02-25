@@ -16,15 +16,12 @@ import pandas as pd
 # import local libraries
 from cff_timetable import CFF, ABSPATH
 
-TEST = False
-if TEST:
+if len(sys.argv) == 1:
     FILENAME = 'schedule_test.csv'
-    CHANNEL = 'general'
+    CHANNEL = 'cff_williammartin'
 else:
     FILENAME = sys.argv[1]
     CHANNEL = sys.argv[2]
-
-TOKEN = os.environ['SLACK_API_TOKEN_BOT']
 
 if __name__ == '__main__':
     
@@ -49,8 +46,7 @@ if __name__ == '__main__':
             entry_time >= now and \
             (entry_time - now).seconds < entry['notice']:
             
-            cff = CFF(level = 'INFO', notify_slack = True, channel = '#{}'.format(CHANNEL),
-                      bot_token = TOKEN)
+            cff = CFF(level = 'INFO', notify_slack = True, channel = '#{}'.format(CHANNEL))
             connections = cff.returnConnections(entry['from'], 
                                                 entry['to'],
                                                 via = None if pd.isna(entry['via']) else entry['via'],
