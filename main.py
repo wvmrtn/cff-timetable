@@ -24,6 +24,8 @@ else:
     FILENAME = sys.argv[1]
     CHANNEL = sys.argv[2]
 
+TOKEN = os.environ['SLACK_API_TOKEN_BOT']
+
 if __name__ == '__main__':
     
     # read schedule for checking when to send notifications
@@ -47,7 +49,8 @@ if __name__ == '__main__':
             entry_time >= now and \
             (entry_time - now).seconds < entry['notice']:
             
-            cff = CFF(level = 'INFO', notify_slack = True, channel = '#{}'.format(CHANNEL))
+            cff = CFF(level = 'INFO', notify_slack = True, channel = '#{}'.format(CHANNEL),
+                      bot_token = TOKEN)
             connections = cff.returnConnections(entry['from'], 
                                                 entry['to'],
                                                 via = None if pd.isna(entry['via']) else entry['via'],

@@ -17,19 +17,21 @@ import requests as re
 # import third-party libraries
 import pandas as pd
 # import local libraries
-from .config import DEBUG, RES_URL
+from .config import RES_URL
 from .slack_api import SlackHandler
 
 # CFF class
 class CFF:
     
     # init method
-    def __init__(self, level = 'DEBUG', notify_slack = False, channel = '#general'):
+    def __init__(self, level = 'DEBUG', notify_slack = False, channel = '#general',
+                 bot_token = None):
         
         # set logger of module
         self.level = level
         self.notify_slack = notify_slack
         self.channel = channel
+        self.bot_token = bot_token
         level = logging.getLevelName(level)
         logger.setLevel(level)
         
@@ -39,7 +41,7 @@ class CFF:
         # log to slack in addition
         if self.notify_slack:
             # add the custom slack handler to the root logger
-            logger.addHandler(SlackHandler(self.channel))
+            logger.addHandler(SlackHandler(self.channel, bot_token))
             
         logger.debug('Created CFF object successfully')
      

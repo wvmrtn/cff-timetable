@@ -13,6 +13,5 @@ import sys
 # import local libraries
 
 # some constants
-DEBUG = True
 RES_URL = 'http://transport.opendata.ch/v1'
 ABSPATH = os.path.dirname(os.path.abspath(sys.argv[0]))

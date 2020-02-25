@@ -12,17 +12,16 @@ __docformat__ = 'reStructuredText'
 import logging
 from logging import Handler
 logger = logging.getLogger(__name__)
-import os
 # import third-party libraries
 import slack
 # import local libraries
 
 class SlackHandler(Handler):
     
-    def __init__(self, channel):
+    def __init__(self, channel, bot_token):
         
         Handler.__init__(self)
-        self.bot_token = os.environ['SLACK_API_TOKEN_BOT'] # needs to be added to the environment variables!  
+        self.bot_token = bot_token  
         self.bot_client = slack.WebClient(token = self.bot_token)
         self.channel = channel
         
