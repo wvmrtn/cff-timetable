@@ -66,7 +66,7 @@ class CFF:
         if content:
             content = json.loads(content.text)
         else:
-            logger.info('No connections found')
+            logger.warning('No connections found')
             
         return content['connections']
     
@@ -78,22 +78,20 @@ class CFF:
             datetime_departure = pd.to_datetime(datetime_departure)
             date_departure = datetime_departure.strftime('%d.%m.%Y')
             time_departure = datetime_departure.strftime('%H:%M:%S')
-            logger.info('Connection at {} on {}'.format(time_departure,
+            logger.info('Status of connection at {} on {}:'.format(time_departure,
                                                         date_departure))
             
             # go over all sections of travel and identify delays
-            departure_delay = {}
+            any_delays = False
             for s in c['sections']:
                 departure = s['departure']
                 location = departure['location']['name']
                 delay = departure['delay']
                 if delay:
-                    departure_delay[departure] = delay
                     logger.info('{}-minute delay from {}'.format(delay, location))
-                else:
-                    departure_delay[departure] = 0
-                    logger.info('No delay from {}'.format(location))
-            
+                    any_delays = True
+                # else:
+                    # logger.info('No delay from {}'.format(location))
             
             # check delay at destination
             arrival = s['arrival']
@@ -101,8 +99,12 @@ class CFF:
             delay = arrival['delay']
             if delay:
                 logger.info('{}-minute delay at arrival in {}'.format(delay, location))
-            else:
-                logger.info('No delay at arrival in {}'.format(location))
+                any_delays = True
+            # else:
+                # logger.info('No delay at arrival in {}'.format(location))
+            
+            if not any_delays:
+                logger.info('No delays')
             
         
     
