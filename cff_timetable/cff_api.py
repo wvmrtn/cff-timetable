@@ -66,38 +66,41 @@ class CFF:
         if content:
             content = json.loads(content.text)
         else:
-            logger.warning('No connections found')
+            logger.info('No connections found')
             
         return content['connections']
     
     # check delay at departure
     def showDelays(self, connections):
         
-        for i, c in enumerate(connections):
+        for _, c in enumerate(connections):
             datetime_departure = c['from']['departure']
             datetime_departure = pd.to_datetime(datetime_departure)
             date_departure = datetime_departure.strftime('%d.%m.%Y')
             time_departure = datetime_departure.strftime('%H:%M:%S')
-            logger.info('Connection {} at {} on {}'.format(i+1, 
-                                                           time_departure,
-                                                           date_departure))
+            logger.info('Connection at {} on {}'.format(time_departure,
+                                                        date_departure))
             
             # go over all sections of travel and identify delays
+            departure_delay = {}
             for s in c['sections']:
                 departure = s['departure']
                 location = departure['location']['name']
                 delay = departure['delay']
                 if delay:
-                    logger.warning('{} from {}'.format(delay, location))
+                    departure_delay[departure] = delay
+                    logger.info('{}-minute delay from {}'.format(delay, location))
                 else:
+                    departure_delay[departure] = 0
                     logger.info('No delay from {}'.format(location))
+            
             
             # check delay at destination
             arrival = s['arrival']
             location = arrival['location']['name']
             delay = arrival['delay']
             if delay:
-                logger.warning('{} at {}'.format(delay, location))
+                logger.info('{}-minute delay at arrival in {}'.format(delay, location))
             else:
                 logger.info('No delay at arrival in {}'.format(location))
             

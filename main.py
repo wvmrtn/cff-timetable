@@ -16,6 +16,7 @@ import pandas as pd
 # import local libraries
 from cff_timetable import CFF, ABSPATH
 
+# handler script if ran without arguments
 if len(sys.argv) == 1:
     FILENAME = 'schedule_test.csv'
     CHANNEL = 'cff_williammartin'
@@ -46,7 +47,9 @@ if __name__ == '__main__':
             entry_time >= now and \
             (entry_time - now).seconds < entry['notice']:
             
-            cff = CFF(level = 'INFO', notify_slack = True, channel = '#{}'.format(CHANNEL))
+            cff = CFF(level = 'INFO', notify_slack = True, 
+                      channel = '#{}'.format(CHANNEL))
+            
             connections = cff.returnConnections(entry['from'], 
                                                 entry['to'],
                                                 via = None if pd.isna(entry['via']) else entry['via'],
