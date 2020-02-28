@@ -20,9 +20,11 @@ from cff_timetable import CFF, ABSPATH
 if len(sys.argv) == 1:
     FILENAME = 'schedule_test.csv'
     CHANNEL = '@URE5PNJTS'
+    LEVEL = 'DEBUG'
 else:
     FILENAME = sys.argv[1]
     CHANNEL = sys.argv[2]
+    LEVEL = sys.argv[3]
 
 if __name__ == '__main__':
     
@@ -47,7 +49,7 @@ if __name__ == '__main__':
             entry_time >= now and \
             (entry_time - now).seconds < entry['notice']:
             
-            cff = CFF(level = 'INFO', notify_slack = True, 
+            cff = CFF(level = LEVEL, notify_slack = True, 
                       channel = '{}'.format(CHANNEL))
             
             connections = cff.returnConnections(entry['from'], 

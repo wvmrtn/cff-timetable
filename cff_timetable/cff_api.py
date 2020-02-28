@@ -66,7 +66,7 @@ class CFF:
         if content:
             content = json.loads(content.text)
         else:
-            logger.warning('No connections found')
+            logger.error('No connections found')
             
         return content['connections']
     
@@ -82,29 +82,23 @@ class CFF:
                                                         date_departure))
             
             # go over all sections of travel and identify delays
-            any_delays = False
             for s in c['sections']:
                 departure = s['departure']
                 location = departure['location']['name']
                 delay = departure['delay']
                 if delay:
-                    logger.info('{}-minute delay from {}'.format(delay, location))
-                    any_delays = True
-                # else:
-                    # logger.info('No delay from {}'.format(location))
+                    logger.warn('{}-minute delay from {}'.format(delay, location))
+                else:
+                    logger.info('No delay from {}'.format(location))
             
             # check delay at destination
             arrival = s['arrival']
             location = arrival['location']['name']
             delay = arrival['delay']
             if delay:
-                logger.info('{}-minute delay at arrival in {}'.format(delay, location))
-                any_delays = True
-            # else:
-                # logger.info('No delay at arrival in {}'.format(location))
-            
-            if not any_delays:
-                logger.info('No delays')
+                logger.warn('{}-minute delay at arrival in {}'.format(delay, location))
+            else:
+                logger.info('No delay at arrival in {}'.format(location))
             
         
     
