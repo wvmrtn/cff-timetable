@@ -31,7 +31,8 @@ class SlackHandler(Handler):
         log_entry = self.format(record)
         response = self.bot_client.chat_postMessage(
             channel = self.channel,
-            text = log_entry)
+            text = log_entry,
+            as_user = True)
         
         assert response["ok"]
         # assert response["message"]["text"] == log_entry

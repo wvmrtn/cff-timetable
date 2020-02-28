@@ -19,7 +19,7 @@ from cff_timetable import CFF, ABSPATH
 # handler script if ran without arguments
 if len(sys.argv) == 1:
     FILENAME = 'schedule_test.csv'
-    CHANNEL = 'cff_williammartin'
+    CHANNEL = '@URE5PNJTS'
 else:
     FILENAME = sys.argv[1]
     CHANNEL = sys.argv[2]
@@ -48,7 +48,7 @@ if __name__ == '__main__':
             (entry_time - now).seconds < entry['notice']:
             
             cff = CFF(level = 'INFO', notify_slack = True, 
-                      channel = '#{}'.format(CHANNEL))
+                      channel = '{}'.format(CHANNEL))
             
             connections = cff.returnConnections(entry['from'], 
                                                 entry['to'],
