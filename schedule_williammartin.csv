@@ -1,6 +1,11 @@
 from,to,via,limit,time,day,notice
-Neuchatel,Chamberonne,,1,08:00,Monday,1800
-Neuchatel,Chamberonne,,1,08:00,Tuesday,1800
-Neuchatel,EPFL,,1,08:00,Wednesday,1800
-Neuchatel,Chamberonne,,1,08:00,Thursday,1800
-Neuchatel,EPFL,,1,07:00,Friday,1800
+Neuchatel,"Yverdon, Parc Scientifique",,1,07:30,Monday,1800
+Neuchatel,"Yverdon, Parc Scientifique",,1,07:30,Tuesday,1800
+Neuchatel,"Yverdon, Parc Scientifique",,1,07:30,Wednesday,1800
+Neuchatel,"Yverdon, Parc Scientifique",,1,07:30,Thursday,1800
+Neuchatel,"Yverdon, Parc Scientifique",,1,07:30,Friday,1800
+"Yverdon, Parc Scientifique",Neuchatel,,1,16:45,Monday,1800
+"Yverdon, Parc Scientifique",Neuchatel,,1,16:45,Tuesday,1800
+"Yverdon, Parc Scientifique",Neuchatel,,1,16:45,Wednesday,1800
+"Yverdon, Parc Scientifique",Neuchatel,,1,16:45,Thursday,1800
+"Yverdon, Parc Scientifique",Neuchatel,,1,16:45,Friday,1800
