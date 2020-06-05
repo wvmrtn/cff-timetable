@@ -74,10 +74,13 @@ class CFF:
     def showDelays(self, connections):
         
         for _, c in enumerate(connections):
+            # get date and time of departure
             datetime_departure = c['from']['departure']
             datetime_departure = pd.to_datetime(datetime_departure)
             date_departure = datetime_departure.strftime('%d.%m.%Y')
             time_departure = datetime_departure.strftime('%H:%M:%S')
+            
+            # log info
             logger.info('Status of connection at {} on {}:'.format(time_departure,
                                                         date_departure))
             
