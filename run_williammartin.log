@@ -1,9 +1,0 @@
-2020-06-04 19:27:16 cff_api.py     DEBUG   : Created CFF object successfully
-2020-06-04 19:27:18 cff_api.py     DEBUG   : Sending request to url: http://transport.opendata.ch/v1/connections
-2020-06-04 19:27:19 cff_api.py     DEBUG   : With payload: {'from': 'Neuchatel', 'to': 'Chamberonne', 'via': None, 'limit': 1, 'time': nan}
-2020-06-04 19:27:20 cff_api.py     INFO    : Status of connection at 05:34:00 on 04.06.2020:
-2020-06-04 19:27:20 cff_api.py     INFO    : No delay from Neuchâtel
-2020-06-04 19:27:20 cff_api.py     INFO    : No delay from Yverdon-les-Bains
-2020-06-04 19:27:21 cff_api.py     INFO    : No delay from Renens VD
-2020-06-04 19:27:24 cff_api.py     INFO    : No delay from Renens VD, gare
-2020-06-04 19:27:24 cff_api.py     INFO    : No delay at arrival in Chavannes-R., UNIL-Chamberonne
